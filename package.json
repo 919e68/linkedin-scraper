@@ -1,0 +1,31 @@
+{
+  "name": "linkedin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "scrape:profiles": "node ./scrape-profiles.js",
+    "test": "node ./test/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "log4js": "^4.0.0",
+    "mysql2": "^1.6.4",
+    "nightmare": "^3.0.1",
+    "node-fetch": "^2.3.0",
+    "node-linkedin": "^0.5.6",
+    "query-string": "^6.2.0",
+    "sequelize": "^4.42.0",
+    "vo": "^4.0.2"
+  }
+}

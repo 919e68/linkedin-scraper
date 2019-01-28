@@ -1,0 +1,25 @@
+{
+  "server": {
+    "port": 3000
+  },
+  "session": {
+    "secret": "6398127928f1b2e",
+    "resave": false,
+    "saveUninitialized": true,
+    "cookie": {
+      "secure": false
+    }
+  },
+  "linkedIn": {
+    "appId": "81ouw5z9t4seb3",
+    "appSecret": "YaLbXig22zQJDjrM",
+    "callbackUri": "http://localhost:3000/auth/linkedin/callback"
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "linkedin_src",
+    "username": "root",
+    "password": "ABC12abc"
+  }
+}
