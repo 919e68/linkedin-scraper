@@ -17,7 +17,7 @@ app.use(session(settings.session))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.resolve(process.cwd(), 'client/public')))
+app.use(express.static(path.resolve(process.cwd(), 'public')))
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
