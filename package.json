@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
+    "start": "nodemon ./index.js",
     "scrape:profiles": "node ./scrape-profiles.js",
+    "watch:less": "node_modules/.bin/less-watch-compiler",
     "test": "node ./test/index.js"
   },
   "author": "",
@@ -19,11 +20,14 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "less": "^3.9.0",
+    "less-watch-compiler": "^1.13.0",
     "log4js": "^4.0.0",
     "mysql2": "^1.6.4",
     "nightmare": "^3.0.1",
     "node-fetch": "^2.3.0",
     "node-linkedin": "^0.5.6",
+    "nodemon": "^1.18.9",
     "query-string": "^6.2.0",
     "sequelize": "^4.42.0",
     "vo": "^4.0.2"
