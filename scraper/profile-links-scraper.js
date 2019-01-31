@@ -46,7 +46,7 @@ class Scraper {
 
         await sleep(5000)
 
-        await this.nightmare
+        let challenge = await this.nightmare
           .evaluate(() => {
             let challenge = document.querySelector('#input__email_verification_pin')
             if (challenge) {
@@ -55,11 +55,16 @@ class Scraper {
               return false
             }
           })
-          .then(challenge => {
-            console.log(challenge)
-          })
+
+        if (challenge) {
+          await this.nightmare
+            .wait('#input__email_verification_pin')
+            .click('#email-pin-submit-button')
+            .wait(3000)
+        }
 
         await this.nightmare
+          .goto('https://www.linkedin.com/feed')
           .wait('#extended-nav-search')
           .then(() => {
             resolve(true)
