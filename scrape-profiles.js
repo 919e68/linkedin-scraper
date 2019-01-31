@@ -16,13 +16,20 @@ let runScraper = (locations, keywords) => {
   return new Promise(async (resolve, reject) => {
     try {
       let scraper = new Scraper(locations, keywords)
+      let loginSuccessful = false
       await scraper
         .login(account.username, account.password)
         .then(success => {
           if (success = true) {
+            loginSuccessful = true
             logger.info('login sucessful.')
           }
         })
+      if (!loginSuccessful) {
+        logger.error('login failed.')
+        reject('login failed')
+      }
+      logger.info('login sucessful.')
 
       let startPage = 1
       let isEndOfPage = false

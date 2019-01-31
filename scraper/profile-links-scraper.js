@@ -35,10 +35,13 @@ class Scraper {
           .insert('#login-email', username)
           .insert('#login-password', password)
           .click('#login-submit')
+
+        await nightmare
+          .wait('#extended-nav-search')
           .then(() => {
             resolve(true)
           })
-          .catch((err) => {
+          .catch(err => {
             reject(err)
           })
       } catch (err) {
