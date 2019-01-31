@@ -69,16 +69,24 @@ class Scraper {
             })
 
           logger.debug(`not found page = ${notFoundFeed}`)
+          await this.nightmare
+            .goto('https://www.linkedin.com')
+            .wait(3000)
+
+          await this.nightmare.evaluate(() => window.location.href).then(url => {
+            logger.debug(`after feed url ${url}`)
+          })
+
         }
 
-        if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
-          let challengeExists = await this.nightmare
-            .evaluate(() => {
-              let challenge = document.querySelector('#input__email_verification_pin')
-              return challenge ? true : false
-            })
+        // if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
+        //   let challengeExists = await this.nightmare
+        //     .evaluate(() => {
+        //       let challenge = document.querySelector('#input__email_verification_pin')
+        //       return challenge ? true : false
+        //     })
 
-          logger.debug(`challenge exists = ${challengeExists}`)
+          // logger.debug(`challenge exists = ${challengeExists}`)
 
 
           // logger.debug(`will go to https://www.linkedin.com`)
@@ -105,7 +113,7 @@ class Scraper {
           // await this.nightmare.evaluate(() => window.location.href).then(url => {
           //   logger.debug(`current url ${url}`)
           // })
-        }
+        // }
 
         await sleep(3000)
 
