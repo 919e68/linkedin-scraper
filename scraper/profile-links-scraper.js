@@ -45,13 +45,13 @@ class Scraper {
             logger.info(url)
           })
 
-          .wait('#login-email')
-          .wait(1000)
-          .wait('#login-password')
-          .wait(1000)
-          .insert('#login-email', username)
-          .insert('#login-password', password)
-          .click('#login-submit')
+          // .wait('#login-email')
+          // .wait(1000)
+          // .wait('#login-password')
+          // .wait(1000)
+          // .insert('#login-email', username)
+          // .insert('#login-password', password)
+          // .click('#login-submit')
 
         await sleep(10000)
 
