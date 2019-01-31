@@ -52,22 +52,30 @@ class Scraper {
           .insert('#login-password', password)
           .click('#login-submit')
 
-        logger.debug(`login for submitted`)
+        logger.debug(`login form submitted`)
 
         await sleep(3000)
         let afterLoginUrl = await this.nightmare.evaluate(() => window.location.href)
 
         logger.debug(`url after login ${afterLoginUrl}`)
 
+
+        if (afterLoginUrl.indexOf('https://www.linkedin.com/feed') !== -1) {
+          logger.debug(`will check if not found`)
+          let notFoundFeed = await this.nightmare
+            .evaluate(() => {
+              let notFound = document.querySelector('.not-found-404')
+              return notFound ? true : false
+            })
+
+          logger.debug(`not found page = ${notFoundFeed}`)
+        }
+
         if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
           let challengeExists = await this.nightmare
             .evaluate(() => {
               let challenge = document.querySelector('#input__email_verification_pin')
-              if (challenge) {
-                return true
-              } else {
-                return false
-              }
+              return challenge ? true : false
             })
 
           logger.debug(`challenge exists = ${challengeExists}`)
