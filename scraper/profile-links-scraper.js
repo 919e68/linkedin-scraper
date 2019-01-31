@@ -66,12 +66,15 @@ class Scraper {
               }
             })
             .then((loginFormExists) => {
-              logger.debug(loginFormExists)
+              logger.debug(`does login for exists ${loginFormExists}`)
+              if (loginFormExists) {
+                this.login(username, password)
+              }
             })
 
           await sleep(3000)
           await this.nightmare.evaluate(() => window.location.href).then(url => {
-            logger.debug(url)
+            logger.debug(`current url ${url}`)
           })
         }
 
@@ -89,12 +92,12 @@ class Scraper {
 
         // logger.debug('Challenge', challenge)
 
-        if (challenge) {
-          await this.nightmare
-            .wait('#input__email_verification_pin')
-            .click('#email-pin-submit-button')
-            .wait(3000)
-        }
+        // if (challenge) {
+        //   await this.nightmare
+        //     .wait('#input__email_verification_pin')
+        //     .click('#email-pin-submit-button')
+        //     .wait(3000)
+        // }
 
         await this.nightmare
           .goto('https://www.linkedin.com/feed')
