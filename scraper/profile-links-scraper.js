@@ -39,27 +39,22 @@ class Scraper {
           .goto('https://www.linkedin.com')
           .wait(3000)
 
+        // await this.nightmare.evaluate(() => window.location.href)
+
         await this.nightmare
-          .evaluate(() => window.location.href)
-          .then(url => {
-            logger.info(url)
-          })
+          .wait('#login-email')
+          .wait(1000)
+          .wait('#login-password')
+          .wait(1000)
+          .insert('#login-email', username)
+          .insert('#login-password', password)
+          .click('#login-submit')
 
-          // .wait('#login-email')
-          // .wait(1000)
-          // .wait('#login-password')
-          // .wait(1000)
-          // .insert('#login-email', username)
-          // .insert('#login-password', password)
-          // .click('#login-submit')
+        await sleep(3000)
 
-        await sleep(10000)
-
-        // await this.nightmare
-        //   .evaluate(() => window.location.href)
-        //   .then(url => {
-        //     logger.info(url)
-        //   })
+        await this.nightmare.evaluate(() => window.location.href).then(url => {
+          logger.debug(url)
+        })
 
         await sleep(3000)
 
