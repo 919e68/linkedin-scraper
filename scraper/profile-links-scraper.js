@@ -60,43 +60,48 @@ class Scraper {
         logger.debug(`url after login ${afterLoginUrl}`)
 
         if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
-          logger.debug(`will go to https://www.linkedin.com`)
-          let loginFormExists = await this.nightmare
-            .goto('https://www.linkedin.com')
-            .wait(3000)
+          let challengeExists = await this.nightmare
             .evaluate(() => {
-              let loginFormExists = document.querySelector('#login-submit')
-              if (loginFormExists) {
+              let challenge = document.querySelector('#input__email_verification_pin')
+              if (challenge) {
                 return true
               } else {
                 return false
               }
             })
 
-          if (loginFormExists) {
-            logger.debug(`login form exists, i will login again`)
-            await this.login(username, password)
-          } else {
-            logger.debug(`login form does not exists`)
-          }
+          logger.debug(`challenge exists = ${challengeExists}`)
 
-          await sleep(3000)
-          await this.nightmare.evaluate(() => window.location.href).then(url => {
-            logger.debug(`current url ${url}`)
-          })
+
+          // logger.debug(`will go to https://www.linkedin.com`)
+          // let loginFormExists = await this.nightmare
+          //   .goto('https://www.linkedin.com')
+          //   .wait(3000)
+          //   .evaluate(() => {
+          //     let loginFormExists = document.querySelector('#login-submit')
+          //     if (loginFormExists) {
+          //       return true
+          //     } else {
+          //       return false
+          //     }
+          //   })
+
+          // if (loginFormExists) {
+          //   logger.debug(`login form exists, i will login again`)
+          //   await this.login(username, password)
+          // } else {
+          //   logger.debug(`login form does not exists`)
+          // }
+
+          // await sleep(3000)
+          // await this.nightmare.evaluate(() => window.location.href).then(url => {
+          //   logger.debug(`current url ${url}`)
+          // })
         }
 
         await sleep(3000)
 
-        // let challenge = await this.nightmare
-        //   .evaluate(() => {
-        //     let challenge = document.querySelector('#input__email_verification_pin')
-        //     if (challenge) {
-        //       return true
-        //     } else {
-        //       return false
-        //     }
-        //   })
+
 
         // logger.debug('Challenge', challenge)
 
