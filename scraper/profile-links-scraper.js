@@ -70,7 +70,6 @@ class Scraper {
         this.currentUrl = url
 
         await nightmare
-          .wait('#extended-nav-search')
           .goto(encodeURI(this.currentUrl))
           .wait('.search-results__list')
 
