@@ -210,7 +210,6 @@ class Scraper {
     return new Promise(async (resolve, reject) => {
       try {
         await nightmare
-          .wait('#extended-nav-search')
           .goto('https://www.linkedin.com/search/results/people/?origin=DISCOVER_FROM_SEARCH_HOME')
           .inject('js', `${appPath}/lib/evalInject.js`)
           .evaluate((location) => {
