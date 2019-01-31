@@ -51,13 +51,25 @@ class Scraper {
           .click('#login-submit')
 
         await sleep(3000)
-
         let afterLoginUrl = await this.nightmare.evaluate(() => window.location.href)
+
         if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
           await this.nightmare
             .goto('https://www.linkedin.com')
             .wait(3000)
+            .evaluate(() => {
+              let loginFormExists = document.querySelector('#login-submit')
+              if (loginFormExists) {
+                return true
+              } else {
+                return false
+              }
+            })
+            .then((loginFormExists) => {
+              logger.debug(loginFormExists)
+            })
 
+          await sleep(3000)
           await this.nightmare.evaluate(() => window.location.href).then(url => {
             logger.debug(url)
           })
