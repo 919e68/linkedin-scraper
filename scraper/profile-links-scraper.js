@@ -41,24 +41,30 @@ class Scraper {
           .goto('https://www.linkedin.com')
           .wait(3000)
 
-        // await this.nightmare.evaluate(() => window.location.href)
 
-        await this.nightmare
-          .wait('#login-email')
-          .wait(1000)
-          .wait('#login-password')
-          .wait(1000)
-          .insert('#login-email', username)
-          .insert('#login-password', password)
-          .click('#login-submit')
+         let loginFormExists = await this.nightmare
+          .evaluate(() => {
+            let loginFormExists = document.querySelector('#login-submit')
+            return loginFormExists ? true : false
+          })
 
-        logger.debug(`login form submitted`)
+        if (loginFormExists) {
+          await this.nightmare
+            .wait('#login-email')
+            .wait(1000)
+            .wait('#login-password')
+            .wait(1000)
+            .insert('#login-email', username)
+            .insert('#login-password', password)
+            .click('#login-submit')
+
+          logger.debug(`login form submitted`)
+        }
 
         await sleep(3000)
+
         let afterLoginUrl = await this.nightmare.evaluate(() => window.location.href)
-
         logger.debug(`url after login ${afterLoginUrl}`)
-
 
         if (afterLoginUrl.indexOf('https://www.linkedin.com/feed') !== -1) {
           logger.debug(`will check if not found`)
@@ -78,15 +84,17 @@ class Scraper {
           })
 
           logger.debug(`will check search form`)
-          await this.nightmare
+          let searhFormExists = await this.nightmare
             .evaluate(() => {
               let searhForm = document.querySelector('#extended-nav-search')
               return searhForm ? true : false
             })
-            .then(exists => {
-              logger.debug(`search form exists = ${exists}`)
-            })
 
+          logger.debug(`search form exists = ${exists}`)
+
+          if (searhFormExists) {
+            resolve(true)
+          }
         }
 
         // if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
@@ -119,35 +127,8 @@ class Scraper {
           //   logger.debug(`login form does not exists`)
           // }
 
-          // await sleep(3000)
-          // await this.nightmare.evaluate(() => window.location.href).then(url => {
-          //   logger.debug(`current url ${url}`)
-          // })
+
         // }
-
-        await sleep(3000)
-
-
-
-        // logger.debug('Challenge', challenge)
-
-        // if (challenge) {
-        //   await this.nightmare
-        //     .wait('#input__email_verification_pin')
-        //     .click('#email-pin-submit-button')
-        //     .wait(3000)
-        // }
-
-        await this.nightmare
-          .goto('https://www.linkedin.com/feed')
-          .wait('#extended-nav-search')
-          .then(() => {
-            resolve(true)
-          })
-          .catch(err => {
-            reject(err)
-          })
-
 
       } catch (err) {
         reject(err)
