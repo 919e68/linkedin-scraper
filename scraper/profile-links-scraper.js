@@ -37,6 +37,14 @@ class Scraper {
 
         await this.nightmare
           .goto('https://www.linkedin.com')
+          .wait(3000)
+
+        await this.nightmare
+          .evaluate(() => window.location.href)
+          .then(url => {
+            logger.info(url)
+          })
+
           .wait('#login-email')
           .wait(1000)
           .wait('#login-password')
@@ -47,13 +55,11 @@ class Scraper {
 
         await sleep(10000)
 
-        await this.nightmare
-          .evaluate(() => {
-            return window.location.href
-          })
-          .then(url => {
-            logger.info(url)
-          })
+        // await this.nightmare
+        //   .evaluate(() => window.location.href)
+        //   .then(url => {
+        //     logger.info(url)
+        //   })
 
         await sleep(3000)
 
