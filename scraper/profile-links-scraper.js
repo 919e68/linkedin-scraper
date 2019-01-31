@@ -12,6 +12,10 @@ const nightmare = new Nightmare({
   openDevTools: false
 })
 
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 class Scraper {
   constructor(locations, keywords, page) {
     this.username = null
@@ -36,15 +40,30 @@ class Scraper {
           .insert('#login-email', username)
           .insert('#login-password', password)
           .click('#login-submit')
+
+        await sleep(5000)
+
+        await this.nightmare
+          .evaluate(() => {
+            let challenge = document.querySelector('#input__email_verification_pin')
+            if (challenge) {
+              return true
+            } else {
+              return false
+            }
+          })
+          .then(challenge => {
+            console.log(challenge)
+          })
+
+        await this.nightmare
+          .wait('#extended-nav-search')
           .then(() => {
             resolve(true)
           })
           .catch(err => {
             reject(err)
           })
-
-        // await this.nightmare
-          // .wait('#extended-nav-search')
 
 
       } catch (err) {
