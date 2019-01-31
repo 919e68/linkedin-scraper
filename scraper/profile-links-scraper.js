@@ -1,7 +1,14 @@
-const appPath = process.cwd()
+const root = process.cwd()
+const settings = require(`${root}/settings`)
 const Nightmare = require('nightmare')
+
+let showNightmare = settings.showNightmare
+if (process.env.APP_ENV == 'production') {
+  showNightmare = false
+}
+
 const nightmare = new Nightmare({
-  show: true,
+  show: showNightmare,
   openDevTools: false
 })
 

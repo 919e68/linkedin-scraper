@@ -21,5 +21,6 @@
     "database": "linkedin_src",
     "username": "root",
     "password": "ABC12abc"
-  }
+  },
+  "showNightmare": true
 }
