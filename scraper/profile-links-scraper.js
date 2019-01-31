@@ -90,7 +90,7 @@ class Scraper {
               return searhForm ? true : false
             })
 
-          logger.debug(`search form exists = ${exists}`)
+          logger.debug(`search form exists = ${searhFormExists}`)
 
           if (searhFormExists) {
             resolve(true)
