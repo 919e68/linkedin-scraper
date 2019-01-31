@@ -97,38 +97,13 @@ class Scraper {
           }
         }
 
-        // if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
         //   let challengeExists = await this.nightmare
         //     .evaluate(() => {
         //       let challenge = document.querySelector('#input__email_verification_pin')
         //       return challenge ? true : false
         //     })
+        // logger.debug(`challenge exists = ${challengeExists}`)
 
-          // logger.debug(`challenge exists = ${challengeExists}`)
-
-
-          // logger.debug(`will go to https://www.linkedin.com`)
-          // let loginFormExists = await this.nightmare
-          //   .goto('https://www.linkedin.com')
-          //   .wait(3000)
-          //   .evaluate(() => {
-          //     let loginFormExists = document.querySelector('#login-submit')
-          //     if (loginFormExists) {
-          //       return true
-          //     } else {
-          //       return false
-          //     }
-          //   })
-
-          // if (loginFormExists) {
-          //   logger.debug(`login form exists, i will login again`)
-          //   await this.login(username, password)
-          // } else {
-          //   logger.debug(`login form does not exists`)
-          // }
-
-
-        // }
 
       } catch (err) {
         reject(err)
