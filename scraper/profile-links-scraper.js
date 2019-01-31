@@ -45,19 +45,29 @@ class Scraper {
           .insert('#login-password', password)
           .click('#login-submit')
 
-        await sleep(5000)
+        await sleep(10000)
 
-        let challenge = await this.nightmare
+        await this.nightmare
           .evaluate(() => {
-            let challenge = document.querySelector('#input__email_verification_pin')
-            if (challenge) {
-              return true
-            } else {
-              return false
-            }
+            return window.location.href
+          })
+          .then(url => {
+            logger.info(url)
           })
 
-        logger.debug('Challenge', challenge)
+        await sleep(3000)
+
+        // let challenge = await this.nightmare
+        //   .evaluate(() => {
+        //     let challenge = document.querySelector('#input__email_verification_pin')
+        //     if (challenge) {
+        //       return true
+        //     } else {
+        //       return false
+        //     }
+        //   })
+
+        // logger.debug('Challenge', challenge)
 
         if (challenge) {
           await this.nightmare
