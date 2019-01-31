@@ -77,6 +77,16 @@ class Scraper {
             logger.debug(`after feed url ${url}`)
           })
 
+          logger.debug(`will check search form`)
+          await this.nightmare
+            .evaluate(() => {
+              let searhForm = document.querySelector('#extended-nav-search')
+              return searhForm ? true : false
+            })
+            .then(exists => {
+              logger.debug(`search form exists = ${exists}`)
+            })
+
         }
 
         // if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
