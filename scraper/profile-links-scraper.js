@@ -35,6 +35,8 @@ class Scraper {
         this.username = username
         this.password = password
 
+        logger.debug(`will login on ${this.currentUrl}`)
+
         await this.nightmare
           .goto('https://www.linkedin.com')
           .wait(3000)
@@ -50,11 +52,16 @@ class Scraper {
           .insert('#login-password', password)
           .click('#login-submit')
 
+        logger.debug(`login for submitted`)
+
         await sleep(3000)
         let afterLoginUrl = await this.nightmare.evaluate(() => window.location.href)
 
+        logger.debug(`url after login ${afterLoginUrl}`)
+
         if (afterLoginUrl.indexOf('https://www.linkedin.com/checkpoint') !== -1) {
-          await this.nightmare
+          logger.debug(`will go to https://www.linkedin.com`)
+          let loginFormExists = await this.nightmare
             .goto('https://www.linkedin.com')
             .wait(3000)
             .evaluate(() => {
@@ -65,12 +72,13 @@ class Scraper {
                 return false
               }
             })
-            .then((loginFormExists) => {
-              logger.debug(`does login for exists ${loginFormExists}`)
-              if (loginFormExists) {
-                this.login(username, password)
-              }
-            })
+
+          if (loginFormExists) {
+            logger.debug(`login form exists, i will login again`)
+            await this.login(username, password)
+          } else {
+            logger.debug(`login form does not exists`)
+          }
 
           await sleep(3000)
           await this.nightmare.evaluate(() => window.location.href).then(url => {
