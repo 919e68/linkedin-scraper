@@ -1,23 +1,65 @@
-<html>
-<head>
-  <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
-  <div class="main">
-    <div class="header">
+<%- include('shared/head') -%>
 
-    </div>
+<div class="main">
+  <%- include('shared/header') -%>
 
-    <div class="search-view">
+  <div class="search-view">
+    <div class="search-categories container">
       <div class="search-category">
         <div class="search-input">
-            <input type="text" class="search-keyword">
+          <input type="text" class="search-keyword" placeholder="Location: ex (Philippines, Canada, United States ...)">
         </div>
       </div>
       <div class="search-category">
-
+        <div class="search-input">
+          <input type="text" class="search-keyword" placeholder="Keywords: ex (Software Development)">
+        </div>
       </div>
     </div>
+    <div class="search-submit">
+      <button>Search</button>
+    </div>
   </div>
-</body>
-</html>
+
+  <div class="profile-list-view">
+    <div class="profiles-inner container">
+      <ul class="profiles">
+        <% profiles.forEach((profile, index) => { %>
+          <li>
+            <div class="profile">
+              <div class="info--counter">
+                <span><%= index + 1 + ((currentPage-1) * limit) %></span>
+              </div>
+              <div class="info--profile-name">
+                <i class="fas fa-user-tie icon"></i>
+                <a href="/profile/<%= profile.slug %>" class="profile-name"><%= `${profile.profileName}` %></a>
+              </div>
+              <div class="info--profile-url">
+                <a href="<%= profile.profileUrl %>" class="profile-url"><%= profile.profileUrl %></a>
+              </div>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="paginator-view">
+    <div class="paginator-inner container">
+      <ul class="pages">
+        <% if (startPage != 1 ) { %>
+          <li class="page"><a href="?page=1">1 ..</a></li>
+        <%} %>
+
+        <% for (let page = startPage; page <= endPage; page++) { %>
+          <li class="page<%= currentPage == page ? ' active' : '' %>"><a href="?page=<%= page %>"><%= page %></a></li>
+        <% } %>
+        <% if (endPage != pages ) { %>
+          <li class="page"><a href="?page=<%= pages %>">.. <%= pages %></a></li>
+        <%} %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%- include('shared/foot') -%>

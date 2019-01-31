@@ -1,16 +1,169 @@
-.main {
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500');
+@import url('https://use.fontawesome.com/releases/v5.6.3/css/all.css');
 
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #298fff;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0px auto;
+  padding: 0px 15px;
+}
+
+.main {
+  padding: 10px 0px;
 }
 
 .header {
+  padding: 25px 0px;
 
+  h1 {
+    color: #4c6a8a;
+  }
 }
 
 .search-view {
-  > .search-category {
-    > .search-input {
-      input {
-        border: 2px solid #a2aebc;
+  margin-bottom: 50px;
+
+  .search-categories {
+    display: flex;
+    margin-bottom: 25px;
+
+    .search-category {
+      width: 50%;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+
+      > .search-input {
+        input {
+          display: block;
+          width: 100%;
+          height: 60px;
+          padding: 8px 12px;
+          border: 2px solid #b4c4d6;
+        }
+      }
+    }
+  }
+
+  .search-submit {
+    > button {
+      display: block;
+      background-color: #509ceb;
+      width: 350px;
+      margin: 0px auto;
+      padding: 20px 80px;
+      border: none;
+      color: #fff;
+    }
+  }
+}
+
+.profile-list-view {
+  .profiles {
+    .profile {
+      display: flex;
+      padding: 15px 0px;
+      border-bottom: 1px solid #e1e7ec;
+
+      .info--counter {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        padding-top: 2px;
+        color: #4b698a;
+
+        span {
+          color: inherit;
+        }
+      }
+
+      .info--profile-name {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        font-weight: 500;
+
+        .icon {
+          margin-right: 20px;
+          font-size: 28px;
+          color: #4c6a8a;
+        }
+
+        .profile-name {
+          font-size: 18px;
+        }
+      }
+
+      .info--profile-url {
+        display: flex;
+        align-items: center;
+
+        .profile-url {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.paginator-view {
+  .paginator-inner {
+    max-width: 600px;
+  }
+
+  .pages {
+    display: flex;
+
+    .page {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+
+      &.active {
+        > a {
+          background-color: #509ceb;
+          color: #fff;
+        }
+      }
+
+      > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f1f1f1;
+        width: 60px;
+        height: 60px;
+        margin: 25px 0px;
+        border-radius: 30px;
       }
     }
   }

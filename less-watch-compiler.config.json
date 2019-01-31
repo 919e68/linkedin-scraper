@@ -1,5 +1,5 @@
 {
   "watchFolder": "client/src/less",
-  "outputFolder": "public/css",
+  "outputFolder": "client/public/css",
   "mainFile": "main.less"
 }

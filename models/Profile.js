@@ -51,6 +51,55 @@ class Profile {
       }
     })
   }
+
+  static list(page, limit) {
+    return new Promise(async (resolve,reject) => {
+      try {
+        page = page || 1
+        limit = limit || 25
+        let offset = (page-1) * limit
+
+
+        let results = await db.query(`
+          SELECT
+            slug,
+            profile_url AS profileUrl,
+            profile_name AS profileName
+          FROM
+            profiles
+          LIMIT :limit
+          OFFSET :offset
+        `, {
+          type: db.QueryTypes.SELECT,
+          replacements: { limit, offset }
+        })
+        resolve(results)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
+
+  static pages(limit) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let pages = await db.query(`
+          SELECT
+            CEIL(COUNT(*)/:limit) AS pages
+          FROM
+            profiles
+          LIMIT 1
+        `, {
+          type: db.QueryTypes.SELECT,
+          replacements: { limit }
+        })
+
+        resolve(pages[0].pages)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
 }
 
 
