@@ -36,7 +36,10 @@ class Scraper {
 
         await this.nightmare
           .goto('https://www.linkedin.com')
-          .wait('.login-form')
+          .wait('#login-email')
+          .wait(1000)
+          .wait('#login-password')
+          .wait(1000)
           .insert('#login-email', username)
           .insert('#login-password', password)
           .click('#login-submit')
