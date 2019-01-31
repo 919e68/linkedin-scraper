@@ -20,6 +20,7 @@ class Scraper {
     this.keywords = keywords
     this.currentPage = page || 1
     this.currentUrl = 'https://www.linkedin.com'
+    this.nightmare = nightmare
   }
 
   login(username, password) {
@@ -29,14 +30,14 @@ class Scraper {
         this.username = username
         this.password = password
 
-        await nightmare
+        await this.nightmare
           .goto('https://www.linkedin.com')
           .wait('.login-form')
           .insert('#login-email', username)
           .insert('#login-password', password)
           .click('#login-submit')
 
-        await nightmare
+        await this.nightmare
           .wait('#extended-nav-search')
           .then(() => {
             resolve(true)
@@ -70,13 +71,13 @@ class Scraper {
         let url = `https://www.linkedin.com/search/results/people/?facetGeoRegion=[${facetGeoRegion}]&keywords=${this.keywords}&origin=GLOBAL_SEARCH_HEADER&page=${this.currentPage}`
         this.currentUrl = url
 
-        await nightmare
+        await this.nightmare
           .goto(encodeURI(this.currentUrl))
           .wait('.search-results__list')
 
         await this.scrollToBottom()
 
-        await nightmare
+        await this.nightmare
           .evaluate(() => {
             return new Promise((resolve, reject) => {
               try {
@@ -118,13 +119,13 @@ class Scraper {
   get(profileUrl) {
     return new Promise(async (resolve, reject) => {
       try {
-        await nightmare.goto(profileUrl)
+        await this.nightmare.goto(profileUrl)
           .inject('js', `${appPath}/lib/evalInject.js`)
           .wait('.core-rail')
 
         await this.scrollToBottom()
 
-        await nightmare
+        await this.nightmare
           .evaluate(async (profileUrl) => {
             let user = {
               url: profileUrl,
@@ -209,7 +210,7 @@ class Scraper {
   searchLocation(location) {
     return new Promise(async (resolve, reject) => {
       try {
-        await nightmare
+        await this.nightmare
           .goto('https://www.linkedin.com/search/results/people/?origin=DISCOVER_FROM_SEARCH_HOME')
           .inject('js', `${appPath}/lib/evalInject.js`)
           .evaluate((location) => {
@@ -252,18 +253,18 @@ class Scraper {
         let previousHeight, currentHeight = 0, lastScrollHeight = 0
         while (previousHeight !== currentHeight) {
           previousHeight = currentHeight
-          currentHeight = await nightmare.evaluate(() => {
+          currentHeight = await this.nightmare.evaluate(() => {
             return document.body.scrollHeight
           })
 
           for (let i = 0; i < currentHeight; i++) {
             if (lastScrollHeight < currentHeight) {
-              await nightmare.scrollTo(lastScrollHeight + i, 0).wait(1)
+              await this.nightmare.scrollTo(lastScrollHeight + i, 0).wait(1)
               lastScrollHeight += 1
             }
           }
 
-          await nightmare.scrollTo(currentHeight, 0).wait(1000)
+          await this.nightmare.scrollTo(currentHeight, 0).wait(1000)
         }
         resolve(true)
       } catch (err) {
