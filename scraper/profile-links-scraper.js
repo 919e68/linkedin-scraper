@@ -56,6 +56,8 @@ class Scraper {
             }
           })
 
+        logger.debug('Challenge', challenge)
+
         if (challenge) {
           await this.nightmare
             .wait('#input__email_verification_pin')
