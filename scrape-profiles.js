@@ -22,13 +22,14 @@ let runScraper = (locations, keywords) => {
         .then(success => {
           if (success = true) {
             loginSuccessful = true
-            logger.info('login sucessful.')
           }
         })
+
       if (!loginSuccessful) {
         logger.error('login failed.')
         reject('login failed')
       }
+
       logger.info('login sucessful.')
 
       let startPage = 1
