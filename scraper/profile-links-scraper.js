@@ -1,5 +1,6 @@
 const appPath = process.cwd()
 const settings = require(`${appPath}/settings`)
+const logger = require(`${appPath}/lib/logger`)
 const Nightmare = require('nightmare')
 
 let showNightmare = settings.showNightmare
