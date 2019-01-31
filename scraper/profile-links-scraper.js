@@ -1,5 +1,5 @@
-const root = process.cwd()
-const settings = require(`${root}/settings`)
+const appPath = process.cwd()
+const settings = require(`${appPath}/settings`)
 const Nightmare = require('nightmare')
 
 let showNightmare = settings.showNightmare
