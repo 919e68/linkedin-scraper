@@ -125,7 +125,7 @@ router.get('/:slug', (req, res) => {
       }
 
       let educations = []
-      let edCount = Math.floor(Math.random() * 5) + 1
+      let edCount = Math.floor(Math.random() * 3) + 1
       for (let i = 0; i < edCount; i++) {
         educations.push({
           school: faker.company.companyName(),
