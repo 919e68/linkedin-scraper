@@ -6,7 +6,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const settings = require('./settings')
-const routes = require('./routes')
+
+const mainRoutes = require('./routes/index')
+const profileRoutes = require('./routes/profiles')
 const searchRoutes = require('./routes/searches')
 
 const PORT = process.env.PORT ? process.env.PORT : settings.server.port
@@ -23,7 +25,8 @@ app.use(express.static(path.resolve(process.cwd(), 'client', 'public')))
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-app.use('/', routes)
+app.use('/', mainRoutes)
+app.use('/profiles', profileRoutes)
 app.use('/searches', searchRoutes)
 
 app.listen(PORT, () => {

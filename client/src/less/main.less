@@ -214,8 +214,23 @@ ul {
     padding: 25px;
   }
 
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &__table-wrapper {
 
+  }
+}
+
+.profile {
+  &__inner {
+
+  }
+
+  &__header {
+    padding: 25px;
   }
 }
 
@@ -266,28 +281,36 @@ ul {
     width: 100%;
     border-collapse: collapse;
 
-    td, th {
+    .cell {
       padding: 15px 20px;
       text-align: left;
+      border-bottom: 1px solid #e1e7ec;
+      text-align: left;
 
-      &.cell {
-        border-bottom: 1px solid #e1e7ec;
-        text-align: left;
+      &--small {
+        width: 40px;
+      }
 
-        &--small {
-          width: 40px;
-        }
+      &--center {
+        text-align: center
+      }
 
-        &--center {
-          text-align: center
-        }
+      &--large {
+        font-weight: 600;
+        font-size: 18px;
+      }
+
+      &--200 {
+        width: 200px;
       }
     }
+
   }
 }
 
 .button {
   padding: 4px 12px;
+  border: none;
   border-radius: 2px;
 
   &--blue {
@@ -297,5 +320,9 @@ ul {
 
   &--small {
     font-size: 13px;
+  }
+
+  &--large {
+    padding: 15px 25px;
   }
 }

@@ -1,8 +1,41 @@
-
 <%- include('shared/head') -%>
 
 <div class="main">
-<%- include('shared/header') -%>
+  <%- include('shared/header') -%>
+
+  <div class="profile">
+    <div class="profile__inner container">
+      <h4 class="profile__header">Profile Info</h4>
+      <div class="table">
+        <table>
+          <tr>
+            <td class="cell cell--200">First Name</td>
+            <td class="cell cell--large">
+              <%= profile.firstName %>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell">Last Name</td>
+            <td class="cell cell--large">
+              <%= profile.lastName %>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell">Current Title</td>
+            <td class="cell cell--large">
+              <%= profile.currentTitle %>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell">Location</td>
+            <td class="cell cell--large">
+              <%= profile.location %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    </div>
 </div>
 
 <%- include('shared/foot') -%>

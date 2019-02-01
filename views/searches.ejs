@@ -5,40 +5,46 @@
 
   <div class="searches">
     <div class="searches__inner container">
+
+      <div class="searches__action">
+        <button class="button button--blue button--large">New Search</button>
+      </div>
+
       <h4 class="searches__header">Recent Searches</h4>
-      <div class="searches__table-wrapper">
-        <table class="table">
+
+      <div class="table searches__table-wrapper">
+        <table>
           <thead>
             <tr>
               <th class="cell cell--center">#</th>
-              <th class="cell cell--padded">Location</th>
-              <th class="cell cell--center cell--padded">Code</th>
-              <th class="cell cell--padded">Keywords</th>
-              <th class="cell cell--center cell--padded">Scrape Count</th>
-              <th class="cell cell--center cell--padded">Finished</th>
-              <th class="cell cell--center cell--padded">Date</th>
+              <th class="cell">Location</th>
+              <th class="cell cell--center">Code</th>
+              <th class="cell">Keywords</th>
+              <th class="cell cell--center">Count</th>
+              <th class="cell cell--center">Finished</th>
+              <th class="cell cell--center">Date</th>
             </tr>
           </thead>
           <tbody>
             <% searches.forEach((search, index) => { %>
               <tr>
-                <td class="cell cell--center cell--padded"><%= index + 1 %></td>
-                <td class="cell cell--padded"><%= search.location %></td>
-                <td class="cell cell--center cell--padded"><%= search.locationCode %></td>
-                <td class="cell cell--padded"><%= search.keywords %></td>
-                <td class="cell cell--center cell--padded">
+                <td class="cell cell--center"><%= index + 1 %></td>
+                <td class="cell"><%= search.location %></td>
+                <td class="cell cell--center"><%= search.locationCode %></td>
+                <td class="cell"><%= search.keywords %></td>
+                <td class="cell cell--center cell--large">
                   <a href="/searches/<%= search.id %>">
                     <%= search.scrapeCount %>
                   </a>
                 </td>
-                <td class="cell cell--center cell--padded">
+                <td class="cell cell--center">
                   <% if (search.isFinish) { %>
                     <span class="badge badge--green badge--small">Yes</span>
                   <% } else { %>
                     <span class="badge badge--red badge--small">no</span>
                   <% } %>
                 </td>
-                <td class="cell cell--center cell--padded cell--small">
+                <td class="cell cell--center cell--small">
                   <%= search.date %>
                 </td>
               </tr>

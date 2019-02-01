@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
           currentPage: 1,
           scrapeCount: Math.floor(Math.random() * 1000) + 300,
           isFinish: true,
-          date: moment(faker.date.past()).format('MM/D/YYYY, hh:mm A')
+          date: moment(faker.date.past()).format('MM/D/YYYY hh:mm A')
         })
       }
 
