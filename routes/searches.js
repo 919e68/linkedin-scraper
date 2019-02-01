@@ -5,6 +5,7 @@ const moment = require('moment')
 const Profile = require(`${root}/models/Profile`)
 
 
+
 router.get('/', (req, res) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -35,37 +36,37 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let page = req.query.page || 1, limit = 10
-      let profiles = await Profile.list(page, limit)
-      let pages = await Profile.pages(limit)
 
-      // for paginator
-      page = parseInt(page)
-      let showPage = 5, startPage, endPage
-      let offset = Math.floor(showPage / 2)
-      if (page - offset <= 0) {
-        startPage = 1
-        endPage = showPage
-      } else if (page + offset >= pages) {
-        startPage = pages - (showPage - 1)
-        endPage = pages
-      } else {
-        startPage = page - offset
-        endPage = page + offset
+      const search = {
+        location: faker.address.country(),
+        keywords: `${faker.name.jobDescriptor()} ${faker.name.jobType()}`
       }
 
-      res.render('search', {
-        profiles: profiles,
-        pages: pages,
-        limit: limit,
-        currentPage: page,
-        startPage: startPage,
-        endPage: endPage
+      let profiles = []
+      for (let i = 0; i < 100; i++) {
+        const firstName = faker.name.firstName()
+        const lastName = faker.name.lastName()
+        const fullName = `${firstName} ${lastName}`
+
+        profiles.push({
+          id: i + 1,
+          firstName: firstName,
+          lastName: lastName,
+          fullName: fullName,
+          country: faker.address.country()
+        })
+      }
+
+      res.render('searches-view', {
+        search,
+        profiles
       })
+
     } catch (err) {
       res.send('server error')
     }
   })
 })
+
 
 module.exports = router

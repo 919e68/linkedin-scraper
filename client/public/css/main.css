@@ -64,6 +64,9 @@ ul {
 .search-view {
   margin-bottom: 50px;
 }
+.search-view__header {
+  padding: 25px 0px;
+}
 .search-view .search-categories {
   display: flex;
   margin-bottom: 25px;
@@ -89,6 +92,18 @@ ul {
   padding: 20px 80px;
   border: none;
   color: #fff;
+}
+.search-view .search-view-filter {
+  display: flex;
+}
+.search-view .search-view-filter__location {
+  width: 50%;
+}
+.search-view .search-view-filter__keywords {
+  width: 50%;
+}
+.search-view .search-view-filter__value {
+  font-size: 24px;
 }
 .profile-list-view .profiles .profile {
   display: flex;
@@ -151,6 +166,7 @@ ul {
   margin: 25px 0px;
   border-radius: 30px;
 }
+<<<<<<< HEAD
 .searches__header {
   padding: 25px;
 }
@@ -186,4 +202,14 @@ ul {
 }
 .badge--small {
   font-size: 13px;
+=======
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table table td,
+.table table th {
+  padding: 15px 20px;
+  text-align: left;
+>>>>>>> 0a9e48a2ee321591a68e22ba82d0cb7ce81bde39
 }
