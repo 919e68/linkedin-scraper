@@ -58,6 +58,9 @@ ul {
 .search-view {
   margin-bottom: 50px;
 }
+.search-view__header {
+  padding: 25px 0px;
+}
 .search-view .search-categories {
   display: flex;
   margin-bottom: 25px;
@@ -83,6 +86,18 @@ ul {
   padding: 20px 80px;
   border: none;
   color: #fff;
+}
+.search-view .search-view-filter {
+  display: flex;
+}
+.search-view .search-view-filter__location {
+  width: 50%;
+}
+.search-view .search-view-filter__keywords {
+  width: 50%;
+}
+.search-view .search-view-filter__value {
+  font-size: 24px;
 }
 .profile-list-view .profiles .profile {
   display: flex;
@@ -144,4 +159,13 @@ ul {
   height: 60px;
   margin: 25px 0px;
   border-radius: 30px;
+}
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table table td,
+.table table th {
+  padding: 15px 20px;
+  text-align: left;
 }

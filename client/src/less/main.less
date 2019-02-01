@@ -51,6 +51,14 @@ ul {
 .search-view {
   margin-bottom: 50px;
 
+  &__inner {
+
+  }
+
+  &__header {
+    padding: 25px 0px;
+  }
+
   .search-categories {
     display: flex;
     margin-bottom: 25px;
@@ -83,6 +91,26 @@ ul {
       padding: 20px 80px;
       border: none;
       color: #fff;
+    }
+  }
+
+  .search-view-filter {
+    display: flex;
+
+    &__location {
+      width: 50%;
+    }
+
+    &__keywords {
+      width: 50%;
+    }
+
+    &__field {
+
+    }
+
+    &__value {
+      font-size: 24px;
     }
   }
 }
@@ -165,6 +193,19 @@ ul {
         margin: 25px 0px;
         border-radius: 30px;
       }
+    }
+  }
+}
+
+
+.table {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td, th {
+      padding: 15px 20px;
+      text-align: left;
     }
   }
 }

@@ -1,0 +1,64 @@
+
+<%- include('shared/head') -%>
+
+<div class="main">
+<%- include('shared/header') -%>
+
+  <div class="search-view">
+    <div class="search-view__inner container">
+      <h4 class="search-view__header">
+        Search View
+      </h4>
+
+      <div class="search-view-filter">
+        <div class="search-view-filter__location">
+          <div class="search-view-filter__field">
+            Location:
+          </div>
+          <div class="search-view-filter__value">
+            <%= search.location %>
+          </div>
+        </div>
+        <div class="search-view-filter__keywords">
+          <div class="search-view-filter__field">
+            Keywords:
+          </div>
+          <div class="search-view-filter__value">
+            <%= search.keywords %>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="search-view__header">
+        Search Results
+      </h4>
+
+      <div class="table">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Title</th>
+              <th>Country</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('shared/foot') -%>
