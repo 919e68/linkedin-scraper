@@ -94,7 +94,8 @@ class Profile {
           replacements: { limit }
         })
 
-        resolve(pages[0].pages)
+        resolve(parseInt(pages[0].pages))
+
       } catch (err) {
         reject(err)
       }

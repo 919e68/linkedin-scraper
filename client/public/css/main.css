@@ -46,6 +46,12 @@ ul {
   margin: 0px auto;
   padding: 0px 15px;
 }
+.text-center {
+  text-align: center;
+}
+.width-number {
+  width: 40px;
+}
 .main {
   padding: 10px 0px;
 }
@@ -144,4 +150,40 @@ ul {
   height: 60px;
   margin: 25px 0px;
   border-radius: 30px;
+}
+.searches__header {
+  padding: 25px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table .cell {
+  border-bottom: 1px solid #e1e7ec;
+  text-align: left;
+}
+.table .cell--center {
+  text-align: center;
+}
+.table .cell--padded {
+  padding: 15px 20px;
+}
+.table .cell--small {
+  font-size: 14px;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 3px;
+}
+.badge--green {
+  background-color: #2ecc71;
+  color: #ffffff;
+}
+.badge--red {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+.badge--small {
+  font-size: 13px;
 }

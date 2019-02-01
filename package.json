@@ -24,6 +24,7 @@
     "less": "^3.9.0",
     "less-watch-compiler": "^1.13.0",
     "log4js": "^4.0.0",
+    "moment": "^2.24.0",
     "mysql2": "^1.6.4",
     "nightmare": "^3.0.1",
     "node-fetch": "^2.3.0",

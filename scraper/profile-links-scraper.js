@@ -126,6 +126,11 @@ class Scraper {
           })
         }
 
+        if (locationIds.length == 0) {
+          logger.debug(`no location id result`)
+          resolve([])
+        }
+
         let facetGeoRegion = locationIds.map(obj => `"${obj}"`)
         let url = `https://www.linkedin.com/search/results/people/?facetGeoRegion=[${facetGeoRegion}]&keywords=${this.keywords}&origin=GLOBAL_SEARCH_HEADER&page=${this.currentPage}`
         this.currentUrl = url

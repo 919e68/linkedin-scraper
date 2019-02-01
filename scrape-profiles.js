@@ -47,19 +47,16 @@ let runScraper = (locations, keywords) => {
                 let members = result.members
                 isEndOfPage = result.isEndOfPage
 
-                // let successInserts = 0
-                // for (let i = 0; i < members.length; i++) {
-                //   let member = members[i]
-                //   await Profile.insertToBeScrape(member.slug, member.profileUrl, member.profileName).then(() => {
-                //     successInserts += 1
-                //     logger.debug(JSON.stringify(member, null, 2))
-                //   })
-                // }
+                let successInserts = 0
+                for (let i = 0; i < members.length; i++) {
+                  let member = members[i]
+                  await Profile.insertToBeScrape(member.slug, member.profileUrl, member.profileName).then(() => {
+                    successInserts += 1
+                    logger.debug(JSON.stringify(member, null, 2))
+                  })
+                }
 
-                // logger.info(`${successInserts} data has been scraped.`)
-                // resolve(true)
-
-                logger.debug(members)
+                logger.info(`${successInserts} data has been scraped.`)
                 resolve(true)
 
               } catch (err) {

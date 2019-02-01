@@ -1,7 +1,6 @@
 const root = process.cwd()
 const router = require('express').Router()
 const queryString = require('query-string')
-const faker = require('faker')
 const logger = require(`${root}/lib/logger`)
 const request = require(`${root}/lib/request`)
 const settings = require(`${root}/settings`)
@@ -30,6 +29,16 @@ router.get('/profiles', (req, res) => {
         endPage = page + offset
       }
 
+      // startPage = startPage > 1 ? startPage : 1
+      // endPage = endPage < pages ? pages : endPage
+
+      logger.debug({
+        pages: pages,
+        startPage: startPage,
+        endPage: endPage,
+        showPage: showPage
+      })
+
       res.render('main', {
         profiles: profiles,
         pages: pages,
@@ -45,7 +54,7 @@ router.get('/profiles', (req, res) => {
 })
 
 
-router.get('/profile/:slug', (req, res) => {
+router.get('/profiles/:slug', (req, res) => {
   return new Promise(async (resolve, reject) => {
     res.render('profile')
   })

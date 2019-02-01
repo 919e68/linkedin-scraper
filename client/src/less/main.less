@@ -36,6 +36,14 @@ ul {
   padding: 0px 15px;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.width-number {
+  width: 40px;
+}
+
 .main {
   padding: 10px 0px;
 }
@@ -166,5 +174,61 @@ ul {
         border-radius: 30px;
       }
     }
+  }
+}
+
+.searches {
+  &__inner {
+
+  }
+
+  &__header {
+    padding: 25px;
+  }
+
+  &__table-wrapper {
+
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .cell {
+    border-bottom: 1px solid #e1e7ec;
+    text-align: left;
+
+    &--center {
+      text-align: center;
+    }
+
+    &--padded {
+      padding: 15px 20px;
+    }
+
+    &--small {
+      font-size: 14px;
+    }
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 3px;
+
+  &--green {
+    background-color: #2ecc71;
+    color: #ffffff;
+  }
+
+  &--red {
+    background-color: #e74c3c;
+    color: #ffffff;
+  }
+
+  &--small {
+    font-size: 13px;
   }
 }

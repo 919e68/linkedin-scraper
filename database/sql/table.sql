@@ -1,3 +1,19 @@
+-- start: searches table
+DROP TABLE IF EXISTS searches;
+CREATE TABLE IF NOT EXISTS searches (
+  id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  location NVARCHAR(150) NOT NULL,
+  keywords NVARCHAR(200) NOT NULL,
+  location_code NVARCHAR(100) NULL,
+  current_page INT NOT NULL DEFAULT 1,
+  scrape_count INT NOT NULL DEFAULT 0,
+  is_finish TINYINT(1) NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+-- end: searches table
+
+
 -- start: profiles table
 DROP TABLE IF EXISTS `profiles`;
 CREATE TABLE IF NOT EXISTS profiles (
@@ -11,3 +27,4 @@ CREATE TABLE IF NOT EXISTS profiles (
   UNIQUE KEY `unique_profile` (`slug`)
 );
 -- end: profiles table
+

@@ -4,17 +4,47 @@
   <%- include('shared/header') -%>
 
   <div class="searches">
-    <div class="searches__inner">
+    <div class="searches__inner container">
       <h4 class="searches__header">Recent Searches</h4>
       <div class="searches__table-wrapper">
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Location</th>
-              <th>Keywords</th>
+              <th class="cell cell--center">#</th>
+              <th class="cell cell--padded">Location</th>
+              <th class="cell cell--center cell--padded">Code</th>
+              <th class="cell cell--padded">Keywords</th>
+              <th class="cell cell--center cell--padded">Scrape Count</th>
+              <th class="cell cell--center cell--padded">Finished</th>
+              <th class="cell cell--center cell--padded">Date</th>
             </tr>
           </thead>
+          <tbody>
+            <% searches.forEach((search, index) => { %>
+              <tr>
+                <td class="cell cell--center cell--padded"><%= index + 1 %></td>
+                <td class="cell cell--padded"><%= search.location %></td>
+                <td class="cell cell--center cell--padded"><%= search.locationCode %></td>
+                <td class="cell cell--padded"><%= search.keywords %></td>
+                <td class="cell cell--center cell--padded">
+                  <a href="/searches/<%= search.id %>">
+                    <%= search.scrapeCount %>
+                  </a>
+                </td>
+                <td class="cell cell--center cell--padded">
+                  <% if (search.isFinish) { %>
+                    <span class="badge badge--green badge--small">Yes</span>
+                  <% } else { %>
+                    <span class="badge badge--red badge--small">no</span>
+                  <% } %>
+                </td>
+                <td class="cell cell--center cell--padded cell--small">
+                  <%= search.date %>
+                </td>
+              </tr>
+            <% }) %>
+
+          </tbody>
         </table>
       </div>
     </div>
