@@ -6,7 +6,9 @@ const logger = require(`${root}/lib/logger`)
 const request = require(`${root}/lib/request`)
 const settings = require(`${root}/settings`)
 const Profile = require(`${root}/models/Profile`)
-const lang = require('lang-list').getList()
+const lang = require('lang-list').getList({
+  supportedLangs: ['en', 'fr', 'es', 'ar']
+})
 
 
 router.get('/', (req, res) => {
@@ -89,10 +91,9 @@ router.get('/:slug', (req, res) => {
       let languages = []
 
       let langCount = Math.floor(Math.random() * 5) + 1
-      let randomLangIndex = Math.floor(Math.random() * lang.length)
       for (let i = 0; i < langCount; i++) {
-        let language = lang[randomLangIndex]
-        languages.push(language)
+        let language = lang[i]
+        languages.push(language.int)
       }
 
       languages = languages.join(', ')
@@ -115,7 +116,8 @@ router.get('/:slug', (req, res) => {
       for (let i = 0; i < count; i++) {
         companies.push({
           name: faker.company.companyName(),
-          industry: faker.commerce.department()
+          industry: faker.commerce.department(),
+          location: faker.address.country()
         })
       }
 
