@@ -39,6 +39,12 @@
               <%= profile.languages %>
             </td>
           </tr>
+          <tr>
+            <td class="cell">Connections</td>
+            <td class="cell cell--large">
+              <%= profile.connections %>
+            </td>
+          </tr>
         </table>
       </div>
 
@@ -90,6 +96,28 @@
                 <td class="cell"><%= company.industry %></td>
                 <td class="cell"><%= company.location %></td>
                 <td class="cell">mm/dd/yyyy</td>
+              </tr>
+            <%  }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="profile__header">Education</h4>
+      <div class="table mb--40">
+        <table>
+          <thead>
+            <tr>
+              <th class="cell">School</th>
+              <th class="cell">Location</th>
+              <th class="cell">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% educations.forEach(education => { %>
+              <tr>
+                <td class="cell"><%= education.school %></td>
+                <td class="cell"><%= education.location %></td>
+                <td class="cell">mmm yyyy - mmm yyyy</td>
               </tr>
             <%  }) %>
           </tbody>

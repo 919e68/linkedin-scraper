@@ -89,10 +89,12 @@ router.get('/:slug', (req, res) => {
       let phone = faker.phone.phoneNumber()
       let website = faker.internet.domainName()
       let languages = []
+      let connections = Math.floor(Math.random() * 1000) + 400
 
       let langCount = Math.floor(Math.random() * 5) + 1
-      for (let i = 0; i < langCount; i++) {
+      for (let i = 0; i < langCount-1; i++) {
         let language = lang[i]
+        logger.debug(language)
         languages.push(language.int)
       }
 
@@ -105,6 +107,7 @@ router.get('/:slug', (req, res) => {
         currentTitle,
         location,
         languages,
+        connections,
         linkedIn,
         email,
         phone,
@@ -112,7 +115,7 @@ router.get('/:slug', (req, res) => {
       }
 
       let companies = []
-      let count = Math.floor(Math.random() * 5) + 1
+      let count = Math.floor(Math.random() * 8) + 1
       for (let i = 0; i < count; i++) {
         companies.push({
           name: faker.company.companyName(),
@@ -121,9 +124,19 @@ router.get('/:slug', (req, res) => {
         })
       }
 
+      let educations = []
+      let edCount = Math.floor(Math.random() * 5) + 1
+      for (let i = 0; i < edCount; i++) {
+        educations.push({
+          school: faker.company.companyName(),
+          location: faker.address.country()
+        })
+      }
+
       res.render('profile', {
         profile,
-        companies
+        companies,
+        educations
       })
     } catch (err) {
       logger.error(err)
