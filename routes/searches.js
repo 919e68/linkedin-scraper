@@ -36,10 +36,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   return new Promise(async (resolve, reject) => {
     try {
+      const location = faker.address.country()
+      const jobType = faker.name.jobType()
 
       const search = {
-        location: faker.address.country(),
-        keywords: `${faker.name.jobDescriptor()} ${faker.name.jobType()}`
+        location: location,
+        keywords: `${faker.name.jobDescriptor()} ${jobType}`
       }
 
       let profiles = []
@@ -53,7 +55,8 @@ router.get('/:id', (req, res) => {
           firstName: firstName,
           lastName: lastName,
           fullName: fullName,
-          country: faker.address.country()
+          title: `${faker.name.jobDescriptor()} ${jobType}`,
+          location: location
         })
       }
 
@@ -63,6 +66,7 @@ router.get('/:id', (req, res) => {
       })
 
     } catch (err) {
+      logger.error(err)
       res.send('server error')
     }
   })

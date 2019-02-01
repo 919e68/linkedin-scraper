@@ -37,22 +37,24 @@
         <table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Title</th>
-              <th>Country</th>
-              <th>Action</th>
+              <th class="cell cell--small cell--center">#</th>
+              <th class="cell">Name</th>
+              <th class="cell">Title</th>
+              <th class="cell">Country</th>
             </tr>
           </thead>
           <tbody>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              <% profiles.forEach((profile, index) => { %>
+                <tr>
+                  <td class="cell cell--small cell--center"><%= index + 1%></td>
+                  <td class="cell">
+                    <a href="/profiles/1"><%= profile.fullName %></a>
+                  </td>
+                  <td class="cell"><%= profile.title %></td>
+                  <td class="cell"><%= profile.location %></td>
+                </tr>
+              <% }) %>
             </tbody>
           </tbody>
         </table>

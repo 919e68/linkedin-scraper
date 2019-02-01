@@ -166,9 +166,24 @@ ul {
   margin: 25px 0px;
   border-radius: 30px;
 }
-<<<<<<< HEAD
 .searches__header {
   padding: 25px;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 3px;
+}
+.badge--green {
+  background-color: #2ecc71;
+  color: #ffffff;
+}
+.badge--red {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+.badge--small {
+  font-size: 13px;
 }
 .table {
   width: 100%;
@@ -187,22 +202,6 @@ ul {
 .table .cell--small {
   font-size: 14px;
 }
-.badge {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 3px;
-}
-.badge--green {
-  background-color: #2ecc71;
-  color: #ffffff;
-}
-.badge--red {
-  background-color: #e74c3c;
-  color: #ffffff;
-}
-.badge--small {
-  font-size: 13px;
-=======
 .table table {
   width: 100%;
   border-collapse: collapse;
@@ -211,5 +210,28 @@ ul {
 .table table th {
   padding: 15px 20px;
   text-align: left;
->>>>>>> 0a9e48a2ee321591a68e22ba82d0cb7ce81bde39
+}
+.table table td.cell,
+.table table th.cell {
+  border-bottom: 1px solid #e1e7ec;
+  text-align: left;
+}
+.table table td.cell--small,
+.table table th.cell--small {
+  width: 40px;
+}
+.table table td.cell--center,
+.table table th.cell--center {
+  text-align: center;
+}
+.button {
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+.button--blue {
+  background: #298fff;
+  color: #ffffff;
+}
+.button--small {
+  font-size: 13px;
 }
