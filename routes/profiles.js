@@ -6,6 +6,7 @@ const logger = require(`${root}/lib/logger`)
 const request = require(`${root}/lib/request`)
 const settings = require(`${root}/settings`)
 const Profile = require(`${root}/models/Profile`)
+const lang = require('lang-list').getList()
 
 
 router.get('/', (req, res) => {
@@ -80,17 +81,47 @@ router.get('/:slug', (req, res) => {
       let fullName = `${firstName} ${lastName}`
       let currentTitle = `${faker.name.jobDescriptor()} ${faker.name.jobType()}`
       let location = faker.address.country()
+      let username = faker.internet.userName().toLowerCase()
+      let linkedIn = `https://www.linkedin.com/in/${username}`
+      let email = `${username}@mail.com`
+      let phone = faker.phone.phoneNumber()
+      let website = faker.internet.domainName()
+      let languages = []
+
+      let langCount = Math.floor(Math.random() * 5) + 1
+      let randomLangIndex = Math.floor(Math.random() * lang.length)
+      for (let i = 0; i < langCount; i++) {
+        let language = lang[randomLangIndex]
+        languages.push(language)
+      }
+
+      languages = languages.join(', ')
 
       let profile = {
         firstName,
         lastName,
         fullName,
         currentTitle,
-        location
+        location,
+        languages,
+        linkedIn,
+        email,
+        phone,
+        website
+      }
+
+      let companies = []
+      let count = Math.floor(Math.random() * 5) + 1
+      for (let i = 0; i < count; i++) {
+        companies.push({
+          name: faker.company.companyName(),
+          industry: faker.commerce.department()
+        })
       }
 
       res.render('profile', {
-        profile
+        profile,
+        companies
       })
     } catch (err) {
       logger.error(err)

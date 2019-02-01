@@ -5,8 +5,9 @@
 
   <div class="profile">
     <div class="profile__inner container">
+
       <h4 class="profile__header">Profile Info</h4>
-      <div class="table">
+      <div class="table mb--40">
         <table>
           <tr>
             <td class="cell cell--200">First Name</td>
@@ -32,10 +33,68 @@
               <%= profile.location %>
             </td>
           </tr>
+          <tr>
+            <td class="cell">Languages</td>
+            <td class="cell cell--large">
+              <%= profile.languages %>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <h4 class="profile__header">Contact Info</h4>
+      <div class="table mb--40">
+        <table>
+          <tr>
+            <td class="cell cell--200">LinkedIn</td>
+            <td class="cell cell--large">
+              <%= profile.linkedIn %>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell">Email</td>
+            <td class="cell cell--large">
+              <%= profile.email %>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell">Phone</td>
+            <td class="cell cell--large">
+              <%= profile.phone %>
+            </td>
+          </tr>
+          <tr>
+            <td class="cell">Website</td>
+            <td class="cell cell--large">
+              <%= profile.website %>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <h4 class="profile__header">Companies</h4>
+      <div class="table mb--40">
+        <table>
+          <thead>
+            <tr>
+              <th class="cell">Name</th>
+              <th class="cell">Industy</th>
+              <th class="cell">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% companies.forEach(company => { %>
+              <tr>
+                <td class="cell"><%= company.name %></td>
+                <td class="cell"><%= company.industry %></td>
+                <td class="cell">mm/dd/yyyy</td>
+              </tr>
+            <%  }) %>
+          </tbody>
         </table>
       </div>
     </div>
-    </div>
+  </div>
 </div>
 
 <%- include('shared/foot') -%>

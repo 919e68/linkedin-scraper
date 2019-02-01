@@ -21,6 +21,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
+    "lang-list": "^1.0.1",
     "less": "^3.9.0",
     "less-watch-compiler": "^1.13.0",
     "log4js": "^4.0.0",

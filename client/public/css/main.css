@@ -174,7 +174,7 @@ ul {
   justify-content: flex-end;
 }
 .profile__header {
-  padding: 25px;
+  padding: 25px 0px;
 }
 .badge {
   display: inline-block;
@@ -245,4 +245,7 @@ ul {
 }
 .button--large {
   padding: 15px 25px;
+}
+.mb--40 {
+  margin-bottom: 40px;
 }
